@@ -6,3 +6,7 @@ config-*.json
 test.go
 fisco_sdk.toml
 *.yaml
+fisco-config/.DS_Store
+.DS_Store
+fisco-config/sdk
+build

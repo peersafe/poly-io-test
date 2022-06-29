@@ -1,0 +1,18 @@
+[Network]
+#type rpc or channel
+Type="channel"
+CAFile="/data/poly-io-test/fisco/sdk/ca.crt"
+Cert="/data/poly-io-test/fisco/sdk/sdk.crt"
+Key="/data/poly-io-test/fisco/sdk/sdk.key"
+[[Network.Connection]]
+NodeURL="121.5.140.201:20201"
+GroupID=1
+
+[Account]
+NodeURL="124.220.176.192:20201"
+# only support PEM format for now
+KeyFile="/data/poly-io-test/fisco/sdk/user.pem"
+
+[Chain]
+ChainID=1
+SMCrypto=false

@@ -431,7 +431,7 @@ func NewCosmosAcc(wallet, pwd string, cli *http.HTTP, cdc *codec.Codec) (*Cosmos
 
 	privKey, _, err := mintkey.UnarmorDecryptPrivKey(string(bz), string(pwd))
 	if err != nil {
-		return nil, fmt.Errorf("failed to decrypt private key: v", err)
+		return nil, fmt.Errorf("failed to decrypt private key: %v", err)
 	}
 
 	acc.PrivateKey = privKey

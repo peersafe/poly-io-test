@@ -1,0 +1,18 @@
+{
+	"RCWallet": "/data/poly/node1/wallet/wallet.dat",
+	"RCWalletPwd": "123",
+	"RchainJsonRpcAddress": "127.0.0.1:21336",
+	"RCEpoch": 0,
+	"ReportInterval": 60,
+	"ReportDir": "./report",
+	"BatchTxNum": 1,
+	"BatchInterval": 1,
+	"TxNumPerBatch": 1,
+	"FiscoCCMC":"0x76e21d1abc8d03874d79e309edd592f3e4e763a9",
+	"FiscoCCMP":"0x1644c4beae4109e2b897c2958c8891d139e056f8" ,
+	"FiscoCCDC":"0x120f42909f6762b6af05d3a8d1d86a92098696a3",
+	"FiscoEth":"0x1f5b23df31af94d23acc3ad69cdd054c4a9e1b43",
+	"FiscoLockProxy":"0x6fafca044886caaecf5aab2e7e14eab2cf070565",
+	"FiscoSdkConfFile":"/data/poly-io-test/fisco/config.toml",
+	"FiscoChainID":10
+}

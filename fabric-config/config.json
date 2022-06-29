@@ -1,0 +1,19 @@
+{
+  "FabricChainID": 7,
+  "FabricMSPPath": "./peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp",
+  "FabricSdkConfFile": "./config_e2e.yaml",
+  "FabricChannel": "mychannel",
+  "FabricUser": "Admin",
+  "FabricOrg": "org1",
+  "FabricCCM": "ccm",
+  "CMEpoch": 1,
+  "RCWallet": "../poly/node1/wallet/wallet.dat",
+  "RCWalletPwd": "123",
+  "RchainJsonRpcAddress": "http://127.0.0.1:21336",
+  "RCEpoch": 0,
+  "ReportInterval": 60,
+  "ReportDir": "./report",
+  "BatchTxNum": 1,
+  "BatchInterval": 1,
+  "TxNumPerBatch": 1
+}

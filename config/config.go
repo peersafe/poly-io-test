@@ -166,9 +166,7 @@ type TestConfig struct {
 
 	// chainsql
 	ChainsqlCCMC      string
-	ChainsqlCCMP      string
-	ChainsqlCCDC      string
-	ChainsqlEth       string
+	ChainsqlCCMCHex	  string
 	ChainsqlLockProxy string
 
 	// cosmos

@@ -1094,8 +1094,8 @@ func RegisterFiscoChain(poly *poly_go_sdk.PolySdk, acc *poly_go_sdk.Account) boo
 }
 
 func RegisterChainsqlChain(poly *poly_go_sdk.PolySdk, acc *poly_go_sdk.Account) bool {
-	txhash, err := poly.Native.Scm.RegisterSideChain(acc.Address, config.DefConfig.ChainsqlChainID, 6, "fisco",
-		1, common3.HexToAddress(config.DefConfig.FiscoCCDC).Bytes(), acc)
+	txhash, err := poly.Native.Scm.RegisterSideChain(acc.Address, config.DefConfig.ChainsqlChainID, 9, "chainsql",
+		1, common3.HexToAddress(config.DefConfig.ChainsqlCCMCHex).Bytes(), acc)
 	if err != nil {
 		if strings.Contains(err.Error(), "already registered") {
 			panic(fmt.Errorf("chainsql chain %d already registered", config.DefConfig.ChainsqlChainID))

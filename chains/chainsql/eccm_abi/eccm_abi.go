@@ -1,7 +1,7 @@
 // Code generated - DO NOT EDIT.
 // This file is a generated binding and any manual changes will be lost.
 
-package eccm_abi
+package EthCrossChainManager
 
 import (
 	"errors"
@@ -706,10 +706,12 @@ func (_EthCrossChainManager *EthCrossChainManagerFilterer) GetChangeBookKeeperEv
 	var events []*EthCrossChainManagerChangeBookKeeperEvent
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainManager.ParseChangeBookKeeperEvent(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }
@@ -885,10 +887,12 @@ func (_EthCrossChainManager *EthCrossChainManagerFilterer) GetCrossChainEventPas
 	var events []*EthCrossChainManagerCrossChainEvent
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainManager.ParseCrossChainEvent(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }
@@ -1048,10 +1052,12 @@ func (_EthCrossChainManager *EthCrossChainManagerFilterer) GetInitGenesisBlockEv
 	var events []*EthCrossChainManagerInitGenesisBlockEvent
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainManager.ParseInitGenesisBlockEvent(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }
@@ -1226,10 +1232,12 @@ func (_EthCrossChainManager *EthCrossChainManagerFilterer) GetOwnershipTransferr
 	var events []*EthCrossChainManagerOwnershipTransferred
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainManager.ParseOwnershipTransferred(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }
@@ -1387,10 +1395,12 @@ func (_EthCrossChainManager *EthCrossChainManagerFilterer) GetPausedPastEvent(tx
 	var events []*EthCrossChainManagerPaused
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainManager.ParsePaused(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }
@@ -1548,10 +1558,12 @@ func (_EthCrossChainManager *EthCrossChainManagerFilterer) GetUnpausedPastEvent(
 	var events []*EthCrossChainManagerUnpaused
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainManager.ParseUnpaused(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }
@@ -1715,10 +1727,12 @@ func (_EthCrossChainManager *EthCrossChainManagerFilterer) GetVerifyHeaderAndExe
 	var events []*EthCrossChainManagerVerifyHeaderAndExecuteTxEvent
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainManager.ParseVerifyHeaderAndExecuteTxEvent(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }

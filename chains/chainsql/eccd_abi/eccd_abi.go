@@ -1,7 +1,7 @@
 // Code generated - DO NOT EDIT.
 // This file is a generated binding and any manual changes will be lost.
 
-package eccd_abi 
+package EthCrossChainData
 
 import (
 	"errors"
@@ -979,10 +979,12 @@ func (_EthCrossChainData *EthCrossChainDataFilterer) GetOwnershipTransferredPast
 	var events []*EthCrossChainDataOwnershipTransferred
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainData.ParseOwnershipTransferred(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }
@@ -1140,10 +1142,12 @@ func (_EthCrossChainData *EthCrossChainDataFilterer) GetPausedPastEvent(txHash s
 	var events []*EthCrossChainDataPaused
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainData.ParsePaused(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }
@@ -1301,10 +1305,12 @@ func (_EthCrossChainData *EthCrossChainDataFilterer) GetUnpausedPastEvent(txHash
 	var events []*EthCrossChainDataUnpaused
 	for _, logRaw := range logRaws {
 		event, err := _EthCrossChainData.ParseUnpaused(*logRaw)
-		if err != nil {
+		if err != nil && err.Error() != "event signature mismatch" {
 			return nil, err
 		}
-		events = append(events, event)
+		if event != nil {
+			events = append(events, event)
+		}
 	}
 	return events, nil
 }

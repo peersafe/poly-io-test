@@ -3,7 +3,11 @@ package chainsql
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/ChainSQL/go-chainsql-api/common"
 	"github.com/ChainSQL/go-chainsql-api/core"
+	data "github.com/ChainSQL/go-chainsql-api/data"
+	eccd_abi "github.com/polynetwork/poly-io-test/chains/chainsql/eccd_abi"
+	eccm_abi "github.com/polynetwork/poly-io-test/chains/chainsql/eccm_abi"
 	config2 "github.com/polynetwork/poly-io-test/config"
 	"github.com/polynetwork/poly-io-test/log"
 	"io/ioutil"
@@ -93,4 +97,28 @@ func ReadFile(fileName string) ([]byte, error) {
 		return nil, fmt.Errorf("ReadFile: ioutil.ReadAll %s error %s", fileName, err)
 	}
 	return data, nil
+}
+
+func (invoker *ChainsqlInvoker) DeployCrossChainDataContract() (string, error) {
+
+	ret,_,err := eccd_abi.DeployEthCrossChainData(invoker.ChainsqlSdk,invoker.TransOpts)
+	if err != nil{
+		return "",err
+	}
+
+	return ret.ContractAddress,nil
+}
+
+func (invoker *ChainsqlInvoker) DeployCrossChainManagerContract(ccdcAddress string, chainID uint64) (string, error) {
+	account, err := data.NewAccountFromAddress(ccdcAddress)
+	if err != nil {
+		return "", err
+	}
+	eccdAddress := common.BytesToAddress(account.Bytes())
+	ret,_,err := eccm_abi.DeployEthCrossChainManager(invoker.ChainsqlSdk,invoker.TransOpts,eccdAddress,chainID)
+	if err != nil{
+		return "",err
+	}
+
+	return ret.ContractAddress,nil
 }

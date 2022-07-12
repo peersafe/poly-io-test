@@ -6,7 +6,6 @@ import (
 	"github.com/ChainSQL/go-chainsql-api/common"
 	"github.com/ChainSQL/go-chainsql-api/core"
 	data "github.com/ChainSQL/go-chainsql-api/data"
-	EthCrossChainData "github.com/ChainSQL/go-chainsql-api/test/eccd_abi"
 	eccd_abi "github.com/polynetwork/poly-io-test/chains/chainsql/eccd_abi"
 	eccm_abi "github.com/polynetwork/poly-io-test/chains/chainsql/eccm_abi"
 	config2 "github.com/polynetwork/poly-io-test/config"
@@ -131,6 +130,6 @@ func (invoker *ChainsqlInvoker) TransaferOwnershipForECCD(ccdcAddress string,own
 	}
 	ccmcAddress := common.BytesToAddress(account.Bytes())
 
-	eccdContract,_ := EthCrossChainData.NewEthCrossChainData(invoker.ChainsqlSdk,ccdcAddress)
+	eccdContract,_ := eccd_abi.NewEthCrossChainData(invoker.ChainsqlSdk,ccdcAddress)
 	return eccdContract.TransferOwnership(invoker.TransOpts,ccmcAddress)
 }

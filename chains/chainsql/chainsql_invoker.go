@@ -8,6 +8,7 @@ import (
 	data "github.com/ChainSQL/go-chainsql-api/data"
 	eccd_abi "github.com/polynetwork/poly-io-test/chains/chainsql/eccd_abi"
 	eccm_abi "github.com/polynetwork/poly-io-test/chains/chainsql/eccm_abi"
+	eccmp_abi "github.com/polynetwork/poly-io-test/chains/chainsql/eccmp_abi"
 	config2 "github.com/polynetwork/poly-io-test/config"
 	"github.com/polynetwork/poly-io-test/log"
 	"io/ioutil"
@@ -132,4 +133,29 @@ func (invoker *ChainsqlInvoker) TransaferOwnershipForECCD(ccdcAddress string,own
 
 	eccdContract,_ := eccd_abi.NewEthCrossChainData(invoker.ChainsqlSdk,ccdcAddress)
 	return eccdContract.TransferOwnership(invoker.TransOpts,ccmcAddress)
+}
+
+func (invoker *ChainsqlInvoker) DeployCrossChainManagerProxyContract(ccmcAddress string) (string, error) {
+	account, err := data.NewAccountFromAddress(ccmcAddress)
+	if err != nil {
+		return "", err
+	}
+	eccmAddress := common.BytesToAddress(account.Bytes())
+	ret,_,err := eccmp_abi.DeployEccmpAbi(invoker.ChainsqlSdk,invoker.TransOpts,eccmAddress)
+	if err != nil{
+		return "",err
+	}
+
+	return ret.ContractAddress,nil
+}
+
+func (invoker *ChainsqlInvoker) TransferOwnershipForECCM(ccmcAddress string,ccmp string) (*common.TxResult,error){
+	account, err := data.NewAccountFromAddress(ccmp)
+	if err != nil {
+		return nil, err
+	}
+	ccmpAddress := common.BytesToAddress(account.Bytes())
+
+	eccmContract,_ := eccm_abi.NewEthCrossChainManager(invoker.ChainsqlSdk,ccmcAddress)
+	return eccmContract.TransferOwnership(invoker.TransOpts,ccmpAddress)
 }

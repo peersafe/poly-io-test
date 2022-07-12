@@ -49,6 +49,9 @@ func DeployChainsqlSmartContract() {
 	if err != nil{
 		panic(err)
 	}
+
+	log.Infof("eccd_address:%s",eccdAddr)
+
 	eccmAddr,err = invoker.DeployCrossChainManagerContract(eccdAddr,config.DefConfig.ChainsqlChainID)
 
 	result,err := invoker.TransaferOwnershipForECCD(eccdAddr,eccmAddr)
@@ -59,6 +62,16 @@ func DeployChainsqlSmartContract() {
 	if result.Status != "validate_success"{
 		panic(result.ErrorMessage)
 	}
-	log.Infof("eccd_address:%s",eccdAddr)
+
 	log.Infof("eccm_address:%s",eccmAddr)
+	eccmpAddr,err := invoker.DeployCrossChainManagerProxyContract(eccmAddr)
+	if err != nil{
+		panic(err)
+	}
+	result,err = invoker.TransferOwnershipForECCM(eccmAddr,eccmpAddr)
+	if result.Status != "validate_success"{
+		panic(result.ErrorMessage)
+	}
+
+	log.Infof("eccmp_address:%s",eccmpAddr)
 }

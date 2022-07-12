@@ -1,4 +1,4 @@
-package chainsql_deployer
+package main
 
 import (
 	"flag"
@@ -50,8 +50,14 @@ func DeployChainsqlSmartContract() {
 		panic(err)
 	}
 	eccmAddr,err = invoker.DeployCrossChainManagerContract(eccdAddr,config.DefConfig.ChainsqlChainID)
+
+	result,err := invoker.TransaferOwnershipForECCD(eccdAddr,eccmAddr)
+
 	if err != nil{
 		panic(err)
+	}
+	if result.Status != "validate_success"{
+		panic(result.ErrorMessage)
 	}
 	log.Infof("eccd_address:%s",eccdAddr)
 	log.Infof("eccm_address:%s",eccmAddr)

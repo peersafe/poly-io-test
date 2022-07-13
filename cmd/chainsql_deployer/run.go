@@ -73,7 +73,7 @@ func DeployChainsqlSmartContract() {
 		panic(err)
 	}
 
-	log.Infof("eccm_address:%s, hex:0x%x",eccmAddr,account)
+	log.Infof("eccm_address:%s, hex:0x%x",eccmAddr,account.Bytes())
 	eccmpAddr,err := invoker.DeployCrossChainManagerProxyContract(eccmAddr)
 	if err != nil{
 		panic(err)
@@ -87,5 +87,5 @@ func DeployChainsqlSmartContract() {
 	if err != nil {
 		panic(err)
 	}
-	log.Infof("eccmp_address:%s, hex:0x%x",eccmpAddr,account)
+	log.Infof("eccmp_address:%s, hex:0x%x",eccmpAddr,account.Bytes())
 }

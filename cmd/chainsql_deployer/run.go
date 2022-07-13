@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"github.com/ChainSQL/go-chainsql-api/data"
 	"github.com/polynetwork/poly-io-test/chains/chainsql"
 	"github.com/polynetwork/poly-io-test/config"
 	"github.com/polynetwork/poly-io-test/log"
@@ -50,7 +51,12 @@ func DeployChainsqlSmartContract() {
 		panic(err)
 	}
 
-	log.Infof("eccd_address:%s",eccdAddr)
+	account, err := data.NewAccountFromAddress(eccdAddr)
+	if err != nil {
+		panic(err)
+	}
+
+	log.Infof("eccd_address:%s, hex:0x%x",eccdAddr,account.Bytes())
 
 	eccmAddr,err = invoker.DeployCrossChainManagerContract(eccdAddr,config.DefConfig.ChainsqlChainID)
 
@@ -62,8 +68,12 @@ func DeployChainsqlSmartContract() {
 	if result.Status != "validate_success"{
 		panic(result.ErrorMessage)
 	}
+	account, err = data.NewAccountFromAddress(eccmAddr)
+	if err != nil {
+		panic(err)
+	}
 
-	log.Infof("eccm_address:%s",eccmAddr)
+	log.Infof("eccm_address:%s, hex:0x%x",eccmAddr,account)
 	eccmpAddr,err := invoker.DeployCrossChainManagerProxyContract(eccmAddr)
 	if err != nil{
 		panic(err)
@@ -73,5 +83,9 @@ func DeployChainsqlSmartContract() {
 		panic(result.ErrorMessage)
 	}
 
-	log.Infof("eccmp_address:%s",eccmpAddr)
+	account, err = data.NewAccountFromAddress(eccmpAddr)
+	if err != nil {
+		panic(err)
+	}
+	log.Infof("eccmp_address:%s, hex:0x%x",eccmpAddr,account)
 }

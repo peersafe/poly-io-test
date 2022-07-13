@@ -33,7 +33,7 @@ require (
 
 replace (
 	//github.com/ChainSQL/go-chainsql-api v1.0.0 => gitlab.peersafe.cn/ChainSQL/go-chainsql-api v0.0.0-20220707040501-06b11dc7bbae
-	github.com/ChainSQL/go-chainsql-api v1.0.0 => D:\workspace\go\go-chainsql-api
+	github.com/ChainSQL/go-chainsql-api v1.0.0 => gitlab.peersafe.cn/ChainSQL/go-chainsql-api v1.1.1
 	github.com/go-kit/kit v0.10.0 => github.com/go-kit/kit v0.8.0
 	github.com/peersafe/gm-crypto v1.0.2 => gitlab.peersafe.cn/fabric/gm-crypto v1.0.2
 	github.com/polynetwork/eth-contracts => github.com/zouxyan/eth-contracts v0.0.0-20210118060440-a0c11940f74c
